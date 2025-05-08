@@ -2533,7 +2533,8 @@ omnia certs addletsencrypt --name {name} --email {email} --renewbefore 30 --chal
 | --notifyemails | The list of emails that receive notification about the certificate                                                    |
 | --buildindns   | Specify whether the DNS zone is in the Azure cloud resource                                                           |
 | --accountid    | Name of certificate                                                                                                   |
-| --userpem      | The user pem (base 64) for exiting account of LetsEncrypt, leave it blank if you would like to register a new account |
+| --dnsprovider        | DNS Provider of the custom domain (Azure/Cloudflare/GoDaddy). Not required for Omnia Cloud certificate. |
+| --apikey      | The API key to connect to the DNS provider. Leave it blank to retrieve it from Key Vault |
 
 
 
@@ -2623,9 +2624,10 @@ omnia certs reissue {certId} --name {name} --accountid {accountid} --orgid {orgi
 | --renewbefore     | Specifies how many days before the certificate expires that it should be renewed                                                            |
 | --validityindays  | Specifies how many days the renewed certificate should be valid for                                                                         |
 | --validityinyears | Specifies how many years the renewed certificate should be valid for (default:1)                                                            |
-| --apikey          | The Api key for a request to Digicert api.Leave it blank if you would like to get from the keyvault. Only set if you know the correct value |  |
 | --tenantid        | The Id of the tenant that needs a new certificate. Unset if you are adding a certificate for Cloud                                          |
 | --notifyemails    | The list of emails that receive notification about the certificate                                                                          |
+| --certproviderapikey          | The API key to connect to the Certificate Authority provider. Leave it blank to retrieve it from Key Vault.   |
+| --dnsproviderapikey          | The API key to connect to the DNS provider. Leave it blank to retrieve it from Key Vault.   |
 
 ---
 ## omnia certs import
