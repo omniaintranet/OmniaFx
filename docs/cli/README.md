@@ -154,7 +154,7 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
   - [omnia tenants diagnostic remove](#omnia-tenants-diagnostic-remove)
         - [Example](#example-tenants-diagnostic-remove)
         - [Required Parameters](#required-parameters-tenants-diagnostic-remove)
-        - [Optional Parameters](#optional-parameters-tenants-diagnostic-add)
+        - [Optional Parameters](#optional-parameters-tenants-diagnostic-remove)
   - [omnia tenants diagnostic list](#omnia-tenants-diagnostic-list)
         - [Example](#example-tenants-diagnostic-list)
         - [Required Parameters](#required-parameters-tenants-diagnostic-list)
@@ -208,6 +208,18 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
         - [Example](#example-tenants-external-storage-list)
         - [Required Parameters](#required-parameters-tenants-external-storage-list)
         - [Optional Parameters](#optional-parameters-tenants-external-storage-list)
+  - [omnia tenants permissions add](#omnia-tenants-permissions-add)
+        - [Example](#example-tenants-permissions-add)
+        - [Required Parameters](#required-parameters-tenants-permissions-add)
+        - [Optional Parameters](#optional-parameters-tenants-permissions-add)
+  - [omnia tenants permissions remove](#omnia-tenants-permissions-remove)
+        - [Example](#example-tenants-permissions-remove)
+        - [Required Parameters](#required-parameters-tenants-permissions-remove)
+        - [Optional Parameters](#optional-parameters-tenants-permissions-remove)
+  - [omnia tenants permissions list](#omnia-tenants-permissions-list)
+        - [Example](#example-tenants-permissions-list)
+        - [Required Parameters](#required-parameters-tenants-permissions-list)
+        - [Optional Parameters](#optional-parameters-tenants-permissions-list)
 - [Tenant Resources Commands](#tenant-resources-commands)
   - [omnia tenants resources sqlupdate](#omnia-tenants-resources-sqlupdate)
         - [Example](#example-tenants-resources-sqlupdate)
@@ -1743,6 +1755,7 @@ omnia tenants external-storage list --tenantid {tenantId}
 | -------------- | ----------------------------------------- |
 | -t, --tenantid | The tenant id that registers the resource |
 
+---
 ## omnia tenants setup-digital-signage
 Setup digital signage for tenant. When executing the command, Omnia Cloud will create a new extension that has the name `[TenantName]DigitalSignageSecret` and create a secret value for this extension in the tenant.
 
@@ -1757,6 +1770,77 @@ omnia tenants setup-digital-signage --tenantid {tenantId}
 | Name           | Description                               |
 | -------------- | ----------------------------------------- |
 | --tenantid     | The tenant id that registers the resource |
+
+---
+## omnia tenants permissions add
+
+Add a new tenant permission binding. Just support TenantAdmin role for now.
+
+##### Example<a id="example-tenants-permissions-add"></a>
+```
+omnia tenants permissions add {tenantid} -r TenantAdmin --principals admin@customer.com
+```
+
+##### Required Parameters<a id="required-parameters-tenants-permissions-add"></a>
+
+| Name           | Description                                   |
+| -------------- | --------------------------------------------- |
+| --tenantid     | The id of the tenant to add permission for |
+| -r,--role | The role to add (e.g., TenantAdmin).  |
+| --principals | The account(s, separated by a comma) to add permission.  |
+
+
+##### Optional Parameters<a id="optional-parameters-tenants-permissions-add"></a>
+
+No Optional parameters
+
+---
+## omnia tenants permissions remove
+
+Remove a tenant diagnostic that requested.
+
+##### Example<a id="example-tenants-permissions-remove"></a>
+```
+omnia tenants permissions remove {tenantid} -r TenantAdmin --principals admin@customer.com
+```
+
+##### Required Parameters<a id="required-parameters-tenants-permissions-remove"></a>
+
+| Name           | Description                                   |
+| -------------- | --------------------------------------------- |
+| --tenantid     | The id of the tenant to remove permission for |
+| -r,--role | The role to remove (e.g., TenantAdmin).  |
+| --principals | The account(s, separated by a comma) to remove permission.  |
+
+
+##### Optional Parameters<a id="optional-parameters-tenants-permissions-remove"></a>
+
+No optional parameters
+
+---
+
+## omnia tenants permissions list
+
+List all tenants permissions by role for a specific tenant.
+
+##### Example<a id="example-tenants-permissions-list"></a>
+```
+omnia tenants permissions list {tenantid} -r TenantAdmin
+```
+
+##### Required Parameters<a id="required-parameters-tenants-permissions-list"></a>
+
+| Name       | Description                                                 |
+| ---------- | ----------------------------------------------------------- |
+| --tenantid | The ID of the tenant for which to display permissions.       |
+| -r,--role | The role to filter by (e.g., TenantAdmin).  |
+
+
+##### Optional Parameters<a id="optional-parameters-tenants-permissions-list"></a>
+
+No Optional parameters
+
+---
 
 # Extension Commands
 
