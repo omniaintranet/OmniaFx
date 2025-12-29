@@ -3589,7 +3589,11 @@ List all announcements, or get announcement details, or list all announcements o
 
 ##### Example<a id="example-announcement-list"></a>
 ```
-omnia announcements list {announcementid} | omnia announcements list --tenantid {TenantId}
+//List all announcements 
+omnia announcements list {announcementId}
+
+//List all announcements of tenant
+omnia announcements list --tenantid {tenantId}
 
 ```
 ##### Required Parameters<a id="required-parameters-annoucement-list"></a>
@@ -3598,9 +3602,10 @@ No required parameters
 
 ##### Optional Parameters<a id="optional-parameters-reports-list"></a>
 
-| Name        | Description                                   |
-| ----------- | -----------------------------------           |
-| --tenantid  | The tenant id need to view get announcement. |
+| Name              | Description                                   |
+| ----------------- | -----------------------------------           |
+| --announcementid  | The announcement id needs to view detail.     |
+| --tenantid        | The tenant id need to get announcement.       |
 
 
 ## omnia announcements delete
@@ -3609,7 +3614,7 @@ Delete an announcement in the Cosmos.
 
 ##### Example<a id="example-announcement-delete"></a>
 ```
-omnia announcements delete --id {id}
+omnia announcements delete --id {Id}
 
 ```
 ##### Required Parameters<a id="required-parameters-announcements-delete"></a>
