@@ -484,6 +484,23 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
          - [Example](#example-reports-delete)
          - [Required Parameters](#required-parameters-reports-delete)
          - [Optional Parameters](#optional-parameters-reports-delete)
+- [Announcements Commands](#announcements-commands)
+    - [omnia announcements new](#omnia-announcements-new)
+         - [Example](#example-announcements-new)
+         - [Required Parameters](#required-parameters-announcements-new)
+         - [Optional Parameters](#optional-parameters-announcements-new)
+    - [omnia announcements update](#omnia-announcements-update)
+         - [Example](#example-announcements-update)
+         - [Required Parameters](#required-parameters-announcements-update)
+         - [Optional Parameters](#optional-parameters-announcements-update)  
+   - [omnia announcements list](#omnia-announcements-list)
+         - [Example](#example-announcements-list)
+         - [Required Parameters](#required-parameters-announcements-list)
+         - [Optional Parameters](#optional-parameters-announcements-list)
+   - [omnia announcements delete](#omnia-announcements-delete)
+         - [Example](#example-announcements-delete)
+         - [Required Parameters](#required-parameters-announcements-delete)
+         - [Optional Parameters](#optional-parameters-announcements-delete)
 - [Regular Mode Deployment for version 6 to 7](#regular-mode-deployment)
    - [Phase 1 - Deploy and run migration](#regular-mode-deployment-phase1)
          - [Optional Commands](#optional-commands-regular-mode-deployment-phase1)
@@ -3501,6 +3518,111 @@ omnia reports delete {reportId}
 
 No required parameters
 
+
+___
+
+# Announcements Commands
+
+With announcement commands, it's possible to manage the list of announcements. This helps register/update an announcement for tenant(s) or all tenants based on the Target Type.
+
+## omnia announcements new
+
+Create a new announcement.
+
+##### Example<a id="example-announcements-new"></a>
+```
+omnia announcements new --title {Title} --description {Description} --targettype {TargetType} --targets {Targets} --startdate {StartDate} --enddate {EndDate} --textcolor {TextColor} --backgroundcolor {Background Color} --icon {IconClass}
+
+```
+##### Required Parameters<a id="required-parameters-announcements-new"></a>
+
+| Name              | Description                                                                |
+| ----------------- | -------------------------------------------------------------------------- |
+| --title           | Friendly name of announcement.                                             |
+| --description     | Description of announcement.                                               |
+| --targettype      | The target type of the announcement (Tenant,Global).                       |
+| --targets         | List of targeting tenant Id, separate by ',' only when targettype Tenant.  |
+| --startdate       | The datetime that announcement start to show.                              |
+| --enddate         | The datetime that announcement will be hide.                               |
+| --textcolor       | Text color of announcement(#B22222).                                       |
+| --backgroundcolor | Background color of announcement(#FF0000).                                 |
+| --icon            | Icon class of announcement (fas fa-eyes).                                  |
+
+
+##### Optional Parameters<a id="optional-parameters-announcements-new"></a>
+If target type is global, targets parameters it need anymore.
+
+
+## omnia announcements update
+
+Update an announcement.
+
+##### Example<a id="example-announcements-update"></a>
+```
+omnia announcements update --title {Title} --description {Description} --targettype {TargetType} --targets {Targets} --startdate {StartDate} --enddate {EndDate} --textcolor {TextColor} --backgroundcolor {Background Color} --icon {IconClass}
+
+```
+##### Required Parameters<a id="required-parameters-announcements-update"></a>
+
+Please note that if the Target Type is Global, the targets parameter will not need and not be used anymore.
+
+| Name                  | Description                                                                 |
+| --------------------- | --------------------------------------------------------------------------- |
+| --title               | Friendly name of announcement.                                              |
+| --description         | Description of announcement.                                                |
+| --targettype          | The target type of the announcement (Tenant,Global).                        |
+| --targets             | List of targeting tenant Id, separate by ',' only when targettype is Tenant.|
+| --startdate           | The datetime that announcement start to show.                               |
+| --enddate             | The datetime that announcement will be hide.                                |
+| --textcolor           | Text color of announcement(#b22222).                                        |
+| --backgroundcolor     | Background color of announcement(#ff0000).                                  |
+| --icon                | Icon class of announcement (fas fa-eyes).                                   |
+
+
+##### Optional Parameters<a id="optional-parameters-announcements-update"></a>
+
+No optional parameters
+
+## omnia announcements list
+
+List all announcements, or get announcement details, or list all announcements of specific tenant.
+
+##### Example<a id="example-announcement-list"></a>
+```
+omnia announcements list {announcementid} | omnia announcements list --tenantid {TenantId}
+
+```
+##### Required Parameters<a id="required-parameters-annoucement-list"></a>
+
+No required parameters
+
+##### Optional Parameters<a id="optional-parameters-reports-list"></a>
+
+| Name        | Description                                   |
+| ----------- | -----------------------------------           |
+| --tenantid  | The tenant id need to view get announcement. |
+
+
+## omnia announcements delete
+
+Delete an announcement in the Cosmos.
+
+##### Example<a id="example-announcement-delete"></a>
+```
+omnia announcements delete --id {id}
+
+```
+##### Required Parameters<a id="required-parameters-announcements-delete"></a>
+
+
+| Name       | Description                              |
+| ---------- | ---------------------------------------  |
+| --id       | The announcement id needs to be deleted. |
+
+
+##### Optional Parameters<a id="optional-parameters-announcements-delete"></a>
+
+No required parameters
 
 ---
 
