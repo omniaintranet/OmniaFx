@@ -362,10 +362,10 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
         - [Example](#example-certs-reissue)
         - [Required Parameters](#required-parameters-certs-reissue)
         - [Optional Parameters](#optional-parameters-certs-reissue)
-  - [omnia certs import](#omnia-certs-import)
-        - [Example](#example-certs-import)
-        - [Required Parameters](#required-parameters-certs-import)
-        - [Optional Parameters](#optional-parameters-certs-import)
+  - [omnia certs cloudimport](#omnia-certs-cloudimport)
+        - [Example](#example-certs-cloudimport)
+        - [Required Parameters](#required-parameters-certs-cloudimport)
+        - [Optional Parameters](#optional-parameters-certs-cloudimport)
   - [omnia certs clouddeploy](#omnia-certs-clouddeploy)
         - [Example](#example-certs-clouddeploy)
         - [Required Parameters](#required-parameters-certs-clouddeploy)
@@ -2731,21 +2731,21 @@ omnia certs reissue {certId} --name {name} --accountid {accountid} --orgid {orgi
 | --dnsproviderapikey          | The API key to connect to the DNS provider. Leave it blank to retrieve it from Key Vault.   |
 
 ---
-## omnia certs import
+## omnia certs cloudimport
 
 Import a certificate from Digicert.com to Azure Key Vault, and then export it to .cer and .key which are being used to instruct Orchestrator to make all AKS clusters update their Secret called OmniaCloud with a new value from the Key Vault.
 
-##### Example<a id="example-certs-import"></a>
+##### Example<a id="example-certs-cloudimport"></a>
 ```
-omnia certs import {certid}
+omnia certs cloudimport {certid}
 ```
-##### Required Parameters<a id="required-parameters-certs-import"></a>
+##### Required Parameters<a id="required-parameters-certs-cloudimport"></a>
 
 | Name   | Description                                    |
 | ------ | ---------------------------------------------- |
 | certid | Cloud certificate id. Only when using DigiCert |
 
-##### Optional Parameters<a id="optional-parameters-certs-import"></a>
+##### Optional Parameters<a id="optional-parameters-certs-cloudimport"></a>
 
 | Name       | Description                                               |
 | ---------- | --------------------------------------------------------- |
@@ -2755,11 +2755,11 @@ omnia certs import {certid}
 
 Roll out certificates used by Omnia and AKS in AKV and AKS based on a Digital Trust knowns as Digicert.com or files.
 
-##### Example<a id="example-certs-deploy"></a>
+##### Example<a id="example-certs-clouddeploy"></a>
 ```
 omnia certs clouddeploy --certid {certid} --type {type} --path {cert} --key {key} --tenantid {tenantId} --code "23-03-23-44" 
 ```
-##### Required Parameters<a id="required-parameters-certs-deploy"></a>
+##### Required Parameters<a id="required-parameters-certs-clouddeploy"></a>
 
 | Name     | Description                                    |
 | -------- | ---------------------------------------------- |
@@ -2767,7 +2767,7 @@ omnia certs clouddeploy --certid {certid} --type {type} --path {cert} --key {key
 | --type   | The certificate (AzureAd,OmniaCloud )          |
 | --code   | You know.                                      |
 
-##### Optional Parameters<a id="optional-parameters-certs-deploy"></a>
+##### Optional Parameters<a id="optional-parameters-certs-clouddeploy"></a>
 
 | Name       | Description                                                         |
 | ---------- | ------------------------------------------------------------------- |
