@@ -1276,7 +1276,7 @@ No optional parameters
 Updates status for a tenant. With suspended status, all services of the tenants scale down to 0. By contrast, scaling up to 1 if the tenant re-active. 
 ##### Example<a id="example-update-status"></a>
 ```
-omnia tenants update status {tenantid} --value {status} --code {yy-dd-MM-m}
+omnia tenants update status {tenantid} --value {status} --description "Description" --code {yy-dd-MM-m}
 ```
 
 ##### Required Parameters<a id="required-parameters-update-status"></a>
@@ -1289,7 +1289,9 @@ omnia tenants update status {tenantid} --value {status} --code {yy-dd-MM-m}
 
 ##### Optional Parameters<a id="optional-parameters-update-status"></a>
 
-No optional parameters
+| Name          | Description                                                                     |
+| ------------- | ------------------------------------------------------------------------------- |
+| --description | The reason why suspended tenant (this parameter only work for suspended status) |
 
 ---
 
