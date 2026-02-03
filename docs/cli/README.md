@@ -1105,6 +1105,7 @@ omnia tenants new --intent dev --name "My Customer" --omnia-dns-suffix "mycustom
 | Name        | Description                                                                                       |
 | ----------- | ------------------------------------------------------------------------------------------------- |
 | --clusterid | The Cluster Id where the tenant will belong to. Otherwise, the cluster is selected by the system. |
+| --singledomain | Enable single-domain mode for the new tenant (true/false). Defaults to true. |
 
 ---
 
