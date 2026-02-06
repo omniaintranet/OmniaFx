@@ -2776,7 +2776,7 @@ omnia certs clouddeploy --certid {certid} --type {type} --path {cert} --key {key
 | ---------- | ------------------------------------------------------------------- |
 | --path     | The location for certificate (.cer) file. Not required for DigiCert |
 | --key      | The location for certificate (.key) file. Not required for DigiCert |
-| --password | The password of the certificate. Not required for DigiCert          |
+| --password | Password is only required for updating Azure AD certificate         |
 | --tenantid | Deploy the new cert for only specfic tenant has id                  |
 
 
