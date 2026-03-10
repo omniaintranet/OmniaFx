@@ -1085,7 +1085,7 @@ Registers a new tenant in Omnia Cloud
 
 ##### Example
 ```
-omnia tenants new --intent dev --name "My Customer" --omnia-dns-suffix "mycustomer" --sp-dns-suffix "mycustomer" --azure-ad-id "8c6e9ace-69e9-4272-8225-714d57a3cceb" --region "westeurope" --depgroupid "e871fe5f-3200-4417-8baa-0305fb74fbbf" --clusterid "f1ae97cc-2bc3-49b1-adff-33f9b7b5beae"
+omnia tenants new --intent dev --name "My Customer" --omnia-dns-suffix "mycustomer" --sp-dns-suffix "mycustomer" --azure-ad-id "8c6e9ace-69e9-4272-8225-714d57a3cceb" --region "westeurope" --depgroupid "e871fe5f-3200-4417-8baa-0305fb74fbbf" --clusterid "f1ae97cc-2bc3-49b1-adff-33f9b7b5beae" --maincontacts "admin@hotmail.com" --securitycontacts "user@hotmail.com,admin@hotmail.com"
 ```
 
 ##### Required Parameters
@@ -1102,9 +1102,12 @@ omnia tenants new --intent dev --name "My Customer" --omnia-dns-suffix "mycustom
 
 ##### Optional Parameters
 
-| Name        | Description                                                                                       |
-| ----------- | ------------------------------------------------------------------------------------------------- |
-| --clusterid | The Cluster Id where the tenant will belong to. Otherwise, the cluster is selected by the system. |
+| Name                  | Description                                                                                                 |
+| --------------------- | ----------------------------------------------------------------------------------------------------------- |
+| --clusterid           | The Cluster Id where the tenant will belong to. Otherwise, the cluster is selected by the system.           |
+| --skip-tenant-contact | Allow to skip tenant contacts information.                                                                  |
+| --maincontacts        | The tenant's main contacts (email) information. It's required unless --skip-tenant-contact is provided.     |
+| --securitycontacts    | The tenant's security contacts (email) information. It's required unless --skip-tenant-contact is provided. | 
 
 ---
 
