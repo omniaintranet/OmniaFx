@@ -1099,15 +1099,16 @@ omnia tenants new --intent dev --name "My Customer" --omnia-dns-suffix "mycustom
 | --azure-ad-id      | The unique Azure Ad Id for the customers tenant. https://support.office.com/en-us/article/find-your-office-365-tenant-id-6891b561-a52d-4ade-9f39-b492285e2c9b |
 | --region           | The region where this tenant should be hosted. Should be located in same region as Office 365                                                                 |
 | --depgroupid       | The deployment group id where this tenant will belong to. Should has the same intent                                                                          |
+| --maincontacts     | The tenant's main contacts (email) information. It's required unless --skip-tenant-contact is provided.                                                       |
+| --securitycontacts | The tenant's security contacts (email) information. It's required unless --skip-tenant-contact is provided.                                                   | 
 
 ##### Optional Parameters
 
 | Name                  | Description                                                                                                 |
 | --------------------- | ----------------------------------------------------------------------------------------------------------- |
 | --clusterid           | The Cluster Id where the tenant will belong to. Otherwise, the cluster is selected by the system.           |
+| --singledomain        | Enable single-domain mode for the new tenant (true/false). Defaults to true.                                |
 | --skip-tenant-contact | Allow to skip tenant contacts information.                                                                  |
-| --maincontacts        | The tenant's main contacts (email) information. It's required unless --skip-tenant-contact is provided.     |
-| --securitycontacts    | The tenant's security contacts (email) information. It's required unless --skip-tenant-contact is provided. | 
 
 ---
 
@@ -2778,7 +2779,7 @@ omnia certs clouddeploy --certid {certid} --type {type} --path {cert} --key {key
 | ---------- | ------------------------------------------------------------------- |
 | --path     | The location for certificate (.cer) file. Not required for DigiCert |
 | --key      | The location for certificate (.key) file. Not required for DigiCert |
-| --password | The password of the certificate. Not required for DigiCert          |
+| --password | Password is only required for updating Azure AD certificate         |
 | --tenantid | Deploy the new cert for only specfic tenant has id                  |
 
 
