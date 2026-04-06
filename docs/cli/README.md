@@ -374,6 +374,9 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
         - [Example](#example-domain-update)
         - [Required Parameters](#required-parameters-domain-update)
         - [Optional Parameters](#optional-parameters-domain-update)
+  - [omnia domain delete](#omnia-domain-delete)
+        - [Example](#example-domain-delete)
+        - [Required Parameters](#required-parameters-domain-delete)
   - [omnia domain dnspreview](#omnia-domain-dnspreview)
         - [Example](#example-domain-dnspreview)
         - [Required Parameters](#required-parameters-domain-dnspreview)
@@ -2823,6 +2826,25 @@ omnia domain update --name intranet.customer.com --certid {certificateid} --tena
 | ---------- | ------------------------------------------------------------------- |
 | --redirectenabled (-r)   | Whether Omnia's default domain always redirects to the custom domain or not                         |
 | --keyid    | (Deprecated) The key now belongs to the certificate. |
+
+---
+
+## omnia domain delete
+
+Remove a custom domain from a tenant.
+
+##### Example<a id="example-domain-delete"></a>
+
+```
+omnia domain delete -t {tenantid} --code 22-05-10-44
+```
+
+##### Required Parameters<a id="required-parameters-domain-delete"></a>
+
+| Name            | Description                                           |
+| --------------- | ----------------------------------------------------- |
+| -t, --tenantid  | The Id of the tenant to remove the custom domain from |
+| --code          | You know.                                             |
 
 ---
 
