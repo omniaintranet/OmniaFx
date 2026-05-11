@@ -453,6 +453,15 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
          - [Example](#example-resourceproviders-add)
          - [Required Parameters](#required-parameters-resourceproviders-add)
          - [Optional Parameters](#optional-parameters-resourceproviders-add)
+   - [omnia resourceproviders add-notificationhub](#omnia-resourceproviders-add-notificationhub)
+         - [Example](#example-resourceproviders-add-notificationhub)
+         - [Required Parameters](#required-parameters-resourceproviders-add-notificationhub)
+   - [omnia resourceproviders update-notificationhub](#omnia-resourceproviders-update-notificationhub)
+         - [Example](#example-resourceproviders-update-notificationhub)
+         - [Required Parameters](#required-parameters-resourceproviders-update-notificationhub)
+   - [omnia resourceproviders delete-notificationhub](#omnia-resourceproviders-delete-notificationhub)
+         - [Example](#example-resourceproviders-delete-notificationhub)
+         - [Required Parameters](#required-parameters-resourceproviders-delete-notificationhub)
 - [Elastic Pools Commands](#elastic-pools-commands)
    - [omnia elasticpools new](#omnia-elasticpools-new)
          - [Example](#example-elasticpools-new)
@@ -504,6 +513,21 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
          - [Example](#example-announcements-delete)
          - [Required Parameters](#required-parameters-announcements-delete)
          - [Optional Parameters](#optional-parameters-announcements-delete)
+- [Feed Tenant Commands](#feed-tenant-commands)
+   - [omnia feedtenants new](#omnia-feedtenants-new)
+         - [Example](#example-feedtenants-new)
+         - [Required Parameters](#required-parameters-feedtenants-new)
+         - [Optional Parameters](#optional-parameters-feedtenants-new)
+   - [omnia feedtenants update](#omnia-feedtenants-update)
+         - [Example](#example-feedtenants-update)
+         - [Required Parameters](#required-parameters-feedtenants-update)
+         - [Optional Parameters](#optional-parameters-feedtenants-update)
+   - [omnia feedtenants list](#omnia-feedtenants-list)
+         - [Example](#example-feedtenants-list)
+         - [Required Parameters](#required-parameters-feedtenants-list)
+   - [omnia feedtenants delete](#omnia-feedtenants-delete)
+         - [Example](#example-feedtenants-delete)
+         - [Required Parameters](#required-parameters-feedtenants-delete)
 - [Regular Mode Deployment for version 6 to 7](#regular-mode-deployment)
    - [Phase 1 - Deploy and run migration](#regular-mode-deployment-phase1)
          - [Optional Commands](#optional-commands-regular-mode-deployment-phase1)
@@ -3370,6 +3394,64 @@ omnia resourceproviders add --name omniauatcloudintentdev3 --type SqlElasticPool
 
 ---
 
+## omnia resourceproviders add-notificationhub <a id="omnia-resourceproviders-add-notificationhub"></a>
+
+Add a new Feed Tenant Resource Provider.
+
+##### Example<a id="example-resourceproviders-add-notificationhub"></a>
+```
+omnia resourceproviders add-notificationhub --name {Name} --hubconnectionstring {HubConnectionString} --hubpath {HubPath} --intent {Intent} --region {Region}
+```
+
+##### Required Parameters<a id="required-parameters-resourceproviders-add-notificationhub"></a>
+
+| Name                   | Description                                    |
+| ---------------------- | ---------------------------------------------- |
+| --name                 | The name of the Feed Tenant Resource Provider. |
+| --hubconnectionstring  | The connection string of the hub.              |
+| --hubpath              | The path of the hub.                           |
+| --intent               | The intent (e.g. dev, prod).                   |
+| --region               | The region (e.g. EastUS).                      |
+
+---
+
+## omnia resourceproviders update-notificationhub <a id="omnia-resourceproviders-update-notificationhub"></a>
+
+Update an existing Feed Tenant Resource Provider.
+
+##### Example<a id="example-resourceproviders-update-notificationhub"></a>
+```
+omnia resourceproviders update-notificationhub --name {Name} --hubconnectionstring {HubConnectionString} --hubpath {HubPath} --intent {Intent} --region {Region}
+```
+
+##### Required Parameters<a id="required-parameters-resourceproviders-update-notificationhub"></a>
+
+| Name                   | Description                                              |
+| ---------------------- | -------------------------------------------------------- |
+| --name                 | The name of the Feed Tenant Resource Provider to update. |
+| --hubconnectionstring  | The new connection string of the hub.                    |
+| --hubpath              | The new path of the hub.                                 |
+| --intent               | The intent (e.g. dev, prod).                             |
+| --region               | The region (e.g. EastUS).                                |
+
+---
+
+## omnia resourceproviders delete-notificationhub <a id="omnia-resourceproviders-delete-notificationhub"></a>
+
+Delete a Feed Tenant Resource Provider.
+
+##### Example<a id="example-resourceproviders-delete-notificationhub"></a>
+```
+omnia resourceproviders delete-notificationhub {id} --code {yy-dd-MM-m}
+```
+
+##### Required Parameters<a id="required-parameters-resourceproviders-delete-notificationhub"></a>
+
+| Name   | Description                                            |
+| ------ | ------------------------------------------------------ |
+| --id   | The id of the Feed Tenant Resource Provider to delete. |
+| --code | The code needs to be entered (format: yy-dd-MM-m).     |
+
 # Elastic Pools Commands
 
 With elastic pools, it's possible to manage the list of active elastic pools. This helps the database deployment can pick the correct elastic pool for a new database.  If there are more than one active pools, the most empty space pool should be picked up.
@@ -3656,6 +3738,92 @@ omnia announcements delete --id {Id}
 ##### Optional Parameters<a id="optional-parameters-announcements-delete"></a>
 
 No required parameters
+
+---
+
+# Feed Tenant Commands <a id="feed-tenant-commands"></a>
+
+With feed tenant commands, it's possible to manage feed tenant configurations. This allows registering, updating, listing, and deleting feed tenant entries in the system.
+
+## omnia feedtenants new <a id="omnia-feedtenants-new"></a>
+
+Create a new feed tenant.
+
+##### Example<a id="example-feedtenants-new"></a>
+```
+omnia feedtenants new --name {Name} --tenantid {TenantId} --resourceproviderid {ResourceProviderId} --domains {domain1,domain2}
+```
+
+##### Required Parameters<a id="required-parameters-feedtenants-new"></a>
+
+| Name          | Description                              |
+| ------------- | ---------------------------------------- |
+| --name        | Friendly name of the feed tenant.        |
+| --tenantid    | The tenant id for the feed tenant.       |
+
+##### Optional Parameters<a id="optional-parameters-feedtenants-new"></a>
+
+| Name                 | Description                                                                   |
+| -------------------- | ----------------------------------------------------------------------------- |
+| --resourceproviderid | The resource provider id associated with the feed tenant.                     |
+| --domains            | A comma-separated list of domains associated with the feed tenant.            |
+
+---
+
+## omnia feedtenants update <a id="omnia-feedtenants-update"></a>
+
+Update an existing feed tenant.
+
+##### Example<a id="example-feedtenants-update"></a>
+```
+omnia feedtenants update --name {Name} --tenantid {TenantId} --resourceproviderid {ResourceProviderId} --domains {domain1,domain2}
+```
+
+##### Required Parameters<a id="required-parameters-feedtenants-update"></a>
+
+| Name          | Description                                   |
+| ------------- | --------------------------------------------- |
+| --name        | Friendly name of the feed tenant.             |
+| --tenantid    | The tenant id of the feed tenant to update.   |
+
+##### Optional Parameters<a id="optional-parameters-feedtenants-update"></a>
+
+| Name                 | Description                                                                   |
+| -------------------- | ----------------------------------------------------------------------------- |
+| --resourceproviderid | The resource provider id associated with the feed tenant.                     |
+| --domains            | A comma-separated list of domains associated with the feed tenant.            |
+
+---
+
+## omnia feedtenants list <a id="omnia-feedtenants-list"></a>
+
+List all feed tenants or get details of a specific feed tenant.
+
+##### Example<a id="example-feedtenants-list"></a>
+```
+omnia feedtenants list
+```
+
+##### Required Parameters<a id="required-parameters-feedtenants-list"></a>
+No required parameters
+
+---
+
+## omnia feedtenants delete <a id="omnia-feedtenants-delete"></a>
+
+Delete a feed tenant.
+
+##### Example<a id="example-feedtenants-delete"></a>
+```
+omnia feedtenants delete {id} --code {yy-dd-MM-m}
+```
+
+##### Required Parameters<a id="required-parameters-feedtenants-delete"></a>
+
+| Name    | Description                                              |
+| ------- | -------------------------------------------------------- |
+| --id    | The id of the feed tenant to be deleted.                 |
+| --code  | The code needs to be entered (format: yy-dd-MM-m).       |
 
 ---
 
