@@ -3751,15 +3751,16 @@ Create a new feed tenant.
 
 ##### Example<a id="example-feedtenants-new"></a>
 ```
-omnia feedtenants new --name {Name} --tenantid {TenantId} --resourceproviderid {ResourceProviderId} --domains {domain1,domain2}
+omnia feedtenants new --name {Name} --tenantid {TenantId} --extensionurl {ExtensionUrl} --resourceproviderid {ResourceProviderId} --domains {domain1,domain2}
 ```
 
 ##### Required Parameters<a id="required-parameters-feedtenants-new"></a>
 
-| Name          | Description                              |
-| ------------- | ---------------------------------------- |
-| --name        | Friendly name of the feed tenant.        |
-| --tenantid    | The tenant id for the feed tenant.       |
+| Name             | Description                              |
+| ---------------- | ---------------------------------------- |
+| --name           | Friendly name of the feed tenant.        |
+| --tenantid       | The tenant id for the feed tenant.       |
+| --extensionurl   | The extension URL of the feed tenant.    |
 
 ##### Optional Parameters<a id="optional-parameters-feedtenants-new"></a>
 
@@ -3776,15 +3777,16 @@ Update an existing feed tenant.
 
 ##### Example<a id="example-feedtenants-update"></a>
 ```
-omnia feedtenants update --name {Name} --tenantid {TenantId} --resourceproviderid {ResourceProviderId} --domains {domain1,domain2}
+omnia feedtenants update --name {Name} --tenantid {TenantId} --extensionurl {ExtensionUrl} --resourceproviderid {ResourceProviderId} --domains {domain1,domain2}
 ```
 
 ##### Required Parameters<a id="required-parameters-feedtenants-update"></a>
 
-| Name          | Description                                   |
-| ------------- | --------------------------------------------- |
-| --name        | Friendly name of the feed tenant.             |
-| --tenantid    | The tenant id of the feed tenant to update.   |
+| Name             | Description                                   |
+| ---------------- | --------------------------------------------- |
+| --name           | Friendly name of the feed tenant.             |
+| --tenantid       | The tenant id of the feed tenant to update.   |
+| --extensionurl   | The extension URL of the feed tenant.         |
 
 ##### Optional Parameters<a id="optional-parameters-feedtenants-update"></a>
 
