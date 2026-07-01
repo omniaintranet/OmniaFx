@@ -3758,7 +3758,7 @@ omnia feedtenants new --name {Name} --tenantid {TenantId} --extensionurl {Extens
 
 | Name             | Description                              |
 | ---------------- | ---------------------------------------- |
-| --name           | Friendly name of the feed tenant.        |
+| --name           | Friendly name of the feed tenant.        |   
 | --tenantid       | The tenant id for the feed tenant.       |
 | --extensionurl   | The extension URL of the feed tenant.    |
 
@@ -3768,6 +3768,7 @@ omnia feedtenants new --name {Name} --tenantid {TenantId} --extensionurl {Extens
 | -------------------- | ----------------------------------------------------------------------------- |
 | --resourceproviderid | The resource provider id associated with the feed tenant.                     |
 | --domains            | A comma-separated list of domains associated with the feed tenant.            |
+| --useactivityhub     | Optional boolean flag to use Activity Hub. Default value is false.            |
 
 ---
 
@@ -3777,7 +3778,7 @@ Update an existing feed tenant.
 
 ##### Example<a id="example-feedtenants-update"></a>
 ```
-omnia feedtenants update --name {Name} --tenantid {TenantId} --extensionurl {ExtensionUrl} --resourceproviderid {ResourceProviderId} --domains {domain1,domain2}
+omnia feedtenants update --name {Name} --tenantid {TenantId} --extensionurl {ExtensionUrl} --resourceproviderid {ResourceProviderId} --domains {domain1,domain2} --useactivityhub true
 ```
 
 ##### Required Parameters<a id="required-parameters-feedtenants-update"></a>
@@ -3794,6 +3795,7 @@ omnia feedtenants update --name {Name} --tenantid {TenantId} --extensionurl {Ext
 | -------------------- | ----------------------------------------------------------------------------- |
 | --resourceproviderid | The resource provider id associated with the feed tenant.                     |
 | --domains            | A comma-separated list of domains associated with the feed tenant.            |
+| --useactivityhub     | Optional boolean flag to use Activity Hub. Default value is false.            |
 
 ---
 
