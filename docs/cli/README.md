@@ -2017,6 +2017,13 @@ Pushes a new version of an extension and makes it available to be installed. The
 ##### Example<a id="example-extensions-push"></a>
 ```
 omnia extensions push {extensionid}:{version} --intent dev
+
+Repush override a same version that only update manifest files
+omnia extensions push {extensionid}:{oldversion} --intent dev
+
+Repush override a same version that need to be updated both manifest files and docker imnage
+omnia extensions push {extensionid}:{oldversion} --intent dev -f
+
 ```
 
 ##### Required Parameters<a id="required-parameters-extensions-push"></a>
@@ -2028,7 +2035,14 @@ omnia extensions push {extensionid}:{version} --intent dev
 
 ##### Optional Parameters<a id="optional-parameters-extensions-push"></a>
 
-No optional parameters
+| Name     | Description                                |
+| -------- | ------------------------------------------ |
+| -f --force | Override both manifest files and the docker image when pushing the existing version (Only override manifest files without this flag) |
+    
+
+#### Note: In case you are pushing a version that already existed. There are two scenarios: 
+ - The version has not been deployed to the cluster. After pushing the correct version of the extension, just deploy it.
+ - The version is already deployed to the cluster. After pushing the correct version of the extension, redeploy and contact the Cloud ops team to clear the images cache on the cluster if you need to check the new code running.
 
 ---
 
