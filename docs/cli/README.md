@@ -3147,6 +3147,7 @@ With permissions, its possible to grant permission for any users to do actions i
 | 6b99566f-f787-42dd-a216-10ed9e8a8f90 | Omnia.Tenant.FirstLineSupport   | Omnia.Tenant.Admin    | List authorized tenants, enanble/disable redirect error page, and restart extensions/services |
 | deb1fbb9-ee05-4d45-becd-95643ccb6db2 | Omnia.Tenant.Developer          | Omnia.Tenant.Admin    | List authorized tenants, Deploy and retract custom extensions that the user is the owner of   |
 | 4bb73e4f-c283-4af8-afac-4fa422943975 | Omnia.Localization.Admin        | Omnia.Extension.Admin | Can administrate all localization files                                                       |
+| c8e4f2a1-3b5d-4c7e-9a1f-2d4b6c8e0a2f | Omnia.SystemNotification        | Omnia.Cloud.Admin     | Receive system notification emails (storage alerts, diagnostic alerts, etc.) without admin permissions |
 
 
 
@@ -3164,6 +3165,9 @@ omnia permissions add c79fd690-18b8-42a1-b540-9ae77193f432 --principals {userNam
 
 Add cloud first line support
 omnia permissions add 731cd4d6-50aa-4463-bad4-b21d9aceadb2 --principals {userName1},{userName2}
+
+Add system notification
+omnia permissions add c8e4f2a1-3b5d-4c7e-9a1f-2d4b6c8e0a2f --principals {userName1},{userName2}
 
 Add cluster roles
 omnia permissions add {clusterRoleId} --resource clusterId:{clusterId} --principals {userName1},{userName2}
