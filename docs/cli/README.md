@@ -15,110 +15,110 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
 - [Omnia Dev Commands](#omnia-dev-commands)
   - [omnia dev new](#omnia-dev-new)
         - [Example Install Templates](#example-install-templates)
-        - [Required Parameters](#required-parameters)
-        - [Optional Parameters](#optional-parameters)
+        - [Required Parameters](#required-parameters-dev-new-install)
+        - [Optional Parameters](#optional-parameters-dev-new-install)
         - [Example List Templates](#example-list-templates)
-        - [Required Parameters](#required-parameters-1)
-        - [Optional Parameters](#optional-parameters-1)
+        - [Required Parameters](#required-parameters-dev-new-list)
+        - [Optional Parameters](#optional-parameters-dev-new-list)
         - [Example Create Using Template](#example-create-using-template)
-        - [Required Parameters](#required-parameters-2)
-        - [Optional Parameters](#optional-parameters-2)
+        - [Required Parameters](#required-parameters-dev-new-create)
+        - [Optional Parameters](#optional-parameters-dev-new-create)
   - [omnia dev publish](#omnia-dev-publish)
-        - [Example](#example)
-        - [Required Parameters](#required-parameters-3)
-        - [Optional Parameters](#optional-parameters-3)
+        - [Example](#example-dev-publish)
+        - [Required Parameters](#required-parameters-dev-publish)
+        - [Optional Parameters](#optional-parameters-dev-publish)
   - [omnia dev restore](#omnia-dev-restore)
-        - [Example](#example-1)
-        - [Required Parameters](#required-parameters-4)
-        - [Optional Parameters](#optional-parameters-4)
+        - [Example](#example-dev-restore)
+        - [Required Parameters](#required-parameters-dev-restore)
+        - [Optional Parameters](#optional-parameters-dev-restore)
   - [omnia dev pack](#omnia-dev-pack)
-        - [Example](#example-2)
-        - [Required Parameters](#required-parameters-5)
-        - [Optional Parameters](#optional-parameters-5)
+        - [Example](#example-dev-pack)
+        - [Required Parameters](#required-parameters-dev-pack)
+        - [Optional Parameters](#optional-parameters-dev-pack)
   - [omnia dev add](#omnia-dev-add)
         - [Example Adding new Omnia Fx](#example-adding-new-omnia-fx)
-        - [Required Parameters](#required-parameters-6)
-        - [Optional Parameters](#optional-parameters-6)
+        - [Required Parameters](#required-parameters-dev-add)
+        - [Optional Parameters](#optional-parameters-dev-add)
         - [Other Examples](#other-examples)
   - [omnia dev update](#omnia-dev-update)
         - [Example Updating to new official version](#example-updating-to-new-official-version)
-        - [Required Parameters](#required-parameters-7)
-        - [Optional Parameters](#optional-parameters-7)
+        - [Required Parameters](#required-parameters-dev-update)
+        - [Optional Parameters](#optional-parameters-dev-update)
         - [Example Updating to locally created nuget package version](#example-updating-to-locally-created-nuget-package-version)
-        - [Required Parameters](#required-parameters-8)
-        - [Optional Parameters](#optional-parameters-8)
+        - [Required Parameters](#required-parameters-dev-update-local)
+        - [Optional Parameters](#optional-parameters-dev-update-local)
   - [omnia dev appsettings get](#omnia-dev-appsettings-get)
-        - [Example](#example-3)
-        - [Required Parameters](#required-parameters-9)
-        - [Optional Parameters](#optional-parameters-9)
+        - [Example](#example-dev-appsettings-get)
+        - [Required Parameters](#required-parameters-dev-appsettings-get)
+        - [Optional Parameters](#optional-parameters-dev-appsettings-get)
 - [Omnia Dev Dependencies Commands](#omnia-dev-dependencies-commands)
   - [omnia dev dependencies list](#omnia-dev-dependencies-list)
-        - [Example](#example-4)
-        - [Required Parameters](#required-parameters-10)
-        - [Optional Parameters](#optional-parameters-10)
+        - [Example](#example-dev-dependencies-list)
+        - [Required Parameters](#required-parameters-dev-dependencies-list)
+        - [Optional Parameters](#optional-parameters-dev-dependencies-list)
   - [omnia dev dependencies add](#omnia-dev-dependencies-add)
-        - [Example](#example-5)
-        - [Required Parameters](#required-parameters-11)
-        - [Optional Parameters](#optional-parameters-11)
+        - [Example](#example-dev-dependencies-add)
+        - [Required Parameters](#required-parameters-dev-dependencies-add)
+        - [Optional Parameters](#optional-parameters-dev-dependencies-add)
   - [omnia dev dependencies update](#omnia-dev-dependencies-update)
-        - [Example](#example-6)
-        - [Required Parameters](#required-parameters-12)
-        - [Optional Parameters](#optional-parameters-12)
+        - [Example](#example-dev-dependencies-update)
+        - [Required Parameters](#required-parameters-dev-dependencies-update)
+        - [Optional Parameters](#optional-parameters-dev-dependencies-update)
   - [omnia dev dependencies remove](#omnia-dev-dependencies-remove)
-        - [Example](#example-7)
-        - [Required Parameters](#required-parameters-13)
-        - [Optional Parameters](#optional-parameters-13)
+        - [Example](#example-dev-dependencies-remove)
+        - [Required Parameters](#required-parameters-dev-dependencies-remove)
+        - [Optional Parameters](#optional-parameters-dev-dependencies-remove)
 - [Omnia Dev TemplateInfos Commands](#omnia-dev-templateinfos-commands)
   - [omnia dev templateinfos list](#omnia-dev-templateinfos-list)
-        - [Example](#example-8)
-        - [Required Parameters](#required-parameters-14)
-        - [Optional Parameters](#optional-parameters-14)
+        - [Example](#example-dev-templateinfos-list)
+        - [Required Parameters](#required-parameters-dev-templateinfos-list)
+        - [Optional Parameters](#optional-parameters-dev-templateinfos-list)
   - [omnia dev templateinfos add](#omnia-dev-templateinfos-add)
-        - [Example](#example-9)
-        - [Required Parameters](#required-parameters-15)
-        - [Optional Parameters](#optional-parameters-15)
+        - [Example](#example-dev-templateinfos-add)
+        - [Required Parameters](#required-parameters-dev-templateinfos-add)
+        - [Optional Parameters](#optional-parameters-dev-templateinfos-add)
   - [omnia dev templateinfos update](#omnia-dev-templateinfos-update)
-        - [Example](#example-10)
-        - [Required Parameters](#required-parameters-16)
-        - [Optional Parameters](#optional-parameters-16)
+        - [Example](#example-dev-templateinfos-update)
+        - [Required Parameters](#required-parameters-dev-templateinfos-update)
+        - [Optional Parameters](#optional-parameters-dev-templateinfos-update)
   - [omnia dev templateinfos remove](#omnia-dev-templateinfos-remove)
-        - [Example](#example-11)
-        - [Required Parameters](#required-parameters-17)
-        - [Optional Parameters](#optional-parameters-17)
+        - [Example](#example-dev-templateinfos-remove)
+        - [Required Parameters](#required-parameters-dev-templateinfos-remove)
+        - [Optional Parameters](#optional-parameters-dev-templateinfos-remove)
 - [Omnia Cloud Login](#omnia-cloud-login)
   - [omnia login](#omnia-login)
-        - [Example](#example-12)
-        - [Required Parameters](#required-parameters-18)
-        - [Optional Parameters](#optional-parameters-18)
+        - [Example](#example-login)
+        - [Required Parameters](#required-parameters-login)
+        - [Optional Parameters](#optional-parameters-login)
   - [omnia logout](#omnia-logout)
-        - [Example](#example-13)
-        - [Required Parameters](#required-parameters-19)
-        - [Optional Parameters](#optional-parameters-19)
+        - [Example](#example-logout)
+        - [Required Parameters](#required-parameters-logout)
+        - [Optional Parameters](#optional-parameters-logout)
 - [Tenant Commands](#tenant-commands)
   - [omnia tenants new](#omnia-tenants-new)
-        - [Example](#example-14)
-        - [Required Parameters](#required-parameters-20)
-        - [Optional Parameters](#optional-parameters-20)
+        - [Example](#example-tenants-new)
+        - [Required Parameters](#required-parameters-tenants-new)
+        - [Optional Parameters](#optional-parameters-tenants-new)
   - [omnia tenants list](#omnia-tenants-list)
-        - [Example](#example-15)
-        - [Required Parameters](#required-parameters-21)
-        - [Optional Parameters](#optional-parameters-21)
+        - [Example](#example-tenants-list)
+        - [Required Parameters](#required-parameters-tenants-list)
+        - [Optional Parameters](#optional-parameters-tenants-list)
   - [omnia tenants update enablerror](#omnia-tenants-update-enablerror)
-        - [Example](#example-16)
-        - [Required Parameters](#required-parameters-22)
-        - [Optional Parameters](#optional-parameters-22)
+        - [Example](#example-tenants-update-enablerror)
+        - [Required Parameters](#required-parameters-tenants-update-enablerror)
+        - [Optional Parameters](#optional-parameters-tenants-update-enablerror)
   - [omnia tenants update disableerror](#omnia-tenants-update-disableerror)
-        - [Example](#example-17)
-        - [Required Parameters](#required-parameters-23)
-        - [Optional Parameters](#optional-parameters-23)
+        - [Example](#example-tenants-update-disableerror)
+        - [Required Parameters](#required-parameters-tenants-update-disableerror)
+        - [Optional Parameters](#optional-parameters-tenants-update-disableerror)
   - [omnia tenants update customerrorpage](#omnia-tenants-update-customerrorpage)
-        - [Example](#example-18)
-        - [Required Parameters](#required-parameters-24)
-        - [Optional Parameters](#optional-parameters-24)
+        - [Example](#example-tenants-update-customerrorpage)
+        - [Required Parameters](#required-parameters-tenants-update-customerrorpage)
+        - [Optional Parameters](#optional-parameters-tenants-update-customerrorpage)
   - [omnia tenants update kaizala](#omnia-tenants-update-kaizala)
-        - [Example](#example-19)
-        - [Required Parameters](#required-parameters-25)
-        - [Optional Parameters](#optional-parameters-25)
+        - [Example](#example-tenants-update-kaizala)
+        - [Required Parameters](#required-parameters-tenants-update-kaizala)
+        - [Optional Parameters](#optional-parameters-tenants-update-kaizala)
   - [omnia tenants update dns](#omnia-tenants-update-dns)
         - [Example](#example-update-dns)
         - [Required Parameters](#required-parameters-update-dns)
@@ -147,6 +147,10 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
   - [omnia tenants update whitelistip](#omnia-tenants-update-whitelistip)
         - [Example](#example-update-whitelistip)
         - [Required Parameters](#required-parameters-update-whitelistip)
+  - [omnia tenants update autosuspendsettings](#omnia-tenants-update-autosuspendsettings)
+        - [Example](#example-update-autosuspendsettings)
+        - [Required Parameters](#required-parameters-update-autosuspendsettings)
+        - [Optional Parameters](#optional-parameters-update-autosuspendsettings)
   - [omnia tenants diagnostic add](#omnia-tenants-diagnostic-add)
         - [Example](#example-tenants-diagnostic-add)
         - [Required Parameters](#required-parameters-tenants-diagnostic-add)
@@ -528,6 +532,15 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
    - [omnia feedtenants delete](#omnia-feedtenants-delete)
          - [Example](#example-feedtenants-delete)
          - [Required Parameters](#required-parameters-feedtenants-delete)
+- [Global Settings Commands](#global-settings-commands)
+   - [omnia globalsettings list](#omnia-globalsettings-list)
+         - [Example](#example-globalsettings-list)
+         - [Required Parameters](#required-parameters-globalsettings-list)
+         - [Optional Parameters](#optional-parameters-globalsettings-list)
+   - [omnia globalsettings update](#omnia-globalsettings-update)
+         - [Example](#example-globalsettings-update)
+         - [Required Parameters](#required-parameters-globalsettings-update)
+         - [Optional Parameters](#optional-parameters-globalsettings-update)
 - [Regular Mode Deployment for version 6 to 7](#regular-mode-deployment)
    - [Phase 1 - Deploy and run migration](#regular-mode-deployment-phase1)
          - [Optional Commands](#optional-commands-regular-mode-deployment-phase1)
@@ -588,7 +601,7 @@ omnia extensions versions aa000000-0000-aaaa-0000-0000000000aa:6.*
 omnia dev new --install 6.0.0
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-new-install"></a>
 
 | Name         | Description                                                                                                                      |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------- |
@@ -596,7 +609,7 @@ omnia dev new --install 6.0.0
 
     
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-new-install"></a>
 
 | Name       | Description                                                                                        |
 | ---------- | -------------------------------------------------------------------------------------------------- |
@@ -607,7 +620,7 @@ omnia dev new --install 6.0.0
 omnia dev new --list
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-new-list"></a>
 
 | Name      | Description               |
 | --------- | ------------------------- |
@@ -615,7 +628,7 @@ omnia dev new --list
 
     
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-new-list"></a>
 
 No optional parameters
 
@@ -629,13 +642,13 @@ omnia dev new vuewebcomponent --name MyWebComponent --tokens element=my-web-comp
 
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-new-create"></a>
 
 No required paramters
 
     
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-new-create"></a>
 
 | Name         | Description                                                                  |
 | ------------ | ---------------------------------------------------------------------------- |
@@ -648,12 +661,12 @@ No required paramters
 
 ## omnia dev publish
 
-##### Example
+##### Example<a id="example-dev-publish"></a>
 ```
 omnia dev publish --path C:\Dev\MyExtension\src --version 1.0.0
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-publish"></a>
 
 | Name      | Description                                                    |
 | --------- | -------------------------------------------------------------- |
@@ -661,7 +674,7 @@ omnia dev publish --path C:\Dev\MyExtension\src --version 1.0.0
 | --version | The extension version                                          |
     
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-publish"></a>
 
 | Name               | Description                                                                                             |
 | ------------------ | ------------------------------------------------------------------------------------------------------- |
@@ -676,7 +689,7 @@ omnia dev publish --path C:\Dev\MyExtension\src --version 1.0.0
 
 Restores npm and nuget dependencies in all a projects recursivly
 
-##### Example
+##### Example<a id="example-dev-restore"></a>
 ```
 Restore dependencies from current directory and down
 omnia dev restore
@@ -686,12 +699,12 @@ omnia dev restore --path C:\Dev\MyExtension\src
 
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-restore"></a>
 
 No required parameters
     
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-restore"></a>
 
 | Name       | Description                                          |
 | ---------- | ---------------------------------------------------- |
@@ -704,7 +717,7 @@ No required parameters
 
 Enables an easy way of creating your own local nuget packages (and symbols for debug)
 
-##### Example
+##### Example<a id="example-dev-pack"></a>
 ```
 pack all your sln projects which have a nuspec and output nuget packages in the specified path
 omnia dev pack -p C:\Projects\OmniaFork\Omnia\src\Omnia.sln -v 1.0.11-mylocal -o ../../TestoutputNugetDir
@@ -714,7 +727,7 @@ omnia dev pack -p C:\Projects\OmniaFork\Omnia\src\Omnia.Fx.Models -v 1.0.11-mylo
 
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-pack"></a>
 
 | Name         | Description                                          |
 | ------------ | ---------------------------------------------------- |
@@ -723,7 +736,7 @@ omnia dev pack -p C:\Projects\OmniaFork\Omnia\src\Omnia.Fx.Models -v 1.0.11-mylo
 | -o --output  | The path in which the resulting packages are created |
     
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-pack"></a>
 
 | Name               | Description                                                             |
 | ------------------ | ----------------------------------------------------------------------- |
@@ -746,11 +759,11 @@ omnia dev add Omnia.Fx.NetCore.SharePoint -- path C://MyExtension/MyExtension.We
 
 >It is recommended that you always specify specific Nuget or Npm package to add to the project. Adding all packages of an Omnia Fx is not necessary in most of the cases.
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-add"></a>
 
 No required parameters
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-add"></a>
 
 | Name         | Description                                              |
 | ------------ | -------------------------------------------------------- |
@@ -802,11 +815,11 @@ omnia dev update omniafx --version 6.0.0
 
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-update"></a>
 
 No required parameters
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-update"></a>
 
 | Name         | Description                                              |
 | ------------ | -------------------------------------------------------- |
@@ -822,7 +835,7 @@ Update all project below the specified path (-p) to use the specifiec version (-
 omnia dev update -p C:\Projects\OmniaFork\OmniaWebContentManagement\src -l C:\MySelected\TestoutputNugetDir -v 1.0.11-mylocal -r
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-update-local"></a>
 
 | Name              | Description                                                  |
 | ----------------- | ------------------------------------------------------------ |
@@ -831,7 +844,7 @@ omnia dev update -p C:\Projects\OmniaFork\OmniaWebContentManagement\src -l C:\My
 | -l --localPackage | Path to the locally generated packages                       |
 | -r --restore      | Restores the dependencies after updating                     |
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-update-local"></a>
 
 No optional parameters
 
@@ -841,19 +854,19 @@ No optional parameters
 
 Generates appsettings.local.json for a specific dev tenant
 
-##### Example
+##### Example<a id="example-dev-appsettings-get"></a>
 ```
 omnia dev appsettings get --path C:\myextension\extension.json --tenantid {tenantid}
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-appsettings-get"></a>
 
 | Name          | Description                                            |
 | ------------- | ------------------------------------------------------ |
 | -t --tenantid | The tenantid of the tenant to generate appsettings for |
     
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-appsettings-get"></a>
 
 | Name      | Description                                               |
 | --------- | --------------------------------------------------------- |
@@ -867,16 +880,16 @@ omnia dev appsettings get --path C:\myextension\extension.json --tenantid {tenan
 
 List all development dependencies
 
-##### Example
+##### Example<a id="example-dev-dependencies-list"></a>
 ```
 omnia dev dependencies list
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-dependencies-list"></a>
 
 No required parameters
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-dependencies-list"></a>
 
 | Name   | Description                 |
 | ------ | --------------------------- |
@@ -888,7 +901,7 @@ No required parameters
 
 Add a new development dependency
 
-##### Example
+##### Example<a id="example-dev-dependencies-add"></a>
 
 The following command is to add a new dependency for developing on Omnia version >= 6.0.0-dev 
 
@@ -896,7 +909,7 @@ The following command is to add a new dependency for developing on Omnia version
 omnia dev dependencies add --omniafx 6.0.0-dev --sdk 3.1.402 --baseimage 6.0 --cli 3.0.0-dev --clitemplate 6.0.0 --vs 16.7.5
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-dependencies-add"></a>
 
 | Name          | Description                                                |
 | ------------- | ---------------------------------------------------------- |
@@ -908,7 +921,7 @@ omnia dev dependencies add --omniafx 6.0.0-dev --sdk 3.1.402 --baseimage 6.0 --c
 | --vs          | Visual Studio version                                      |
 
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-dependencies-add"></a>
 
 | Name      | Description                             |
 | --------- | --------------------------------------- |
@@ -920,7 +933,7 @@ omnia dev dependencies add --omniafx 6.0.0-dev --sdk 3.1.402 --baseimage 6.0 --c
 
 Update a development dependency
 
-##### Example
+##### Example<a id="example-dev-dependencies-update"></a>
 
 The following command is to update a dependency for developing on Omnia version >= 6.0.0-dev 
 
@@ -928,14 +941,14 @@ The following command is to update a dependency for developing on Omnia version 
 omnia dev dependencies update --omniafx 6.0.0-dev --baseimage 6.0 --message "Documentation: https://github.com/preciofishbone/OmniaFx"
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-dependencies-update"></a>
 
 | Name      | Description                                                |
 | --------- | ---------------------------------------------------------- |
 | --omniafx | The minimum version of Omnia that requires this dependency |
 
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-dependencies-update"></a>
 
 | Name          | Description                             |
 | ------------- | --------------------------------------- |
@@ -952,19 +965,19 @@ omnia dev dependencies update --omniafx 6.0.0-dev --baseimage 6.0 --message "Doc
 
 Remove a development dependency
 
-##### Example
+##### Example<a id="example-dev-dependencies-remove"></a>
 
 ```
 omnia dev dependencies remove --id eecc5c09-9e15-4907-80c8-67a198387b7b
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-dependencies-remove"></a>
 
 | Name | Description                    |
 | ---- | ------------------------------ |
 | --id | The id of dependency to remove |
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-dependencies-remove"></a>
 
 No optional parameters
 
@@ -976,16 +989,16 @@ No optional parameters
 
 List all template information
 
-##### Example
+##### Example<a id="example-dev-templateinfos-list"></a>
 ```
 omnia dev templateinfos list
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-templateinfos-list"></a>
 
 No required parameters
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-templateinfos-list"></a>
 
 No optional parameters
 
@@ -995,7 +1008,7 @@ No optional parameters
 
 Add information for Omnia cli template version
 
-##### Example
+##### Example<a id="example-dev-templateinfos-add"></a>
 
 The following command is to add information for Omnia cli template version 6.0.0 
 
@@ -1003,14 +1016,14 @@ The following command is to add information for Omnia cli template version 6.0.0
 omnia dev templateinfos add --version 6.0.0
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-templateinfos-add"></a>
 
 | Name      | Description                                         |
 | --------- | --------------------------------------------------- |
 | --version | The verion of omnia cli template to add information |
 
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-templateinfos-add"></a>
 
 No optional parameters
 
@@ -1020,7 +1033,7 @@ No optional parameters
 
 Update template information
 
-##### Example
+##### Example<a id="example-dev-templateinfos-update"></a>
 
 The following command is to update information for Omnia cli template version 6.0.0 
 
@@ -1028,14 +1041,14 @@ The following command is to update information for Omnia cli template version 6.
 omnia dev templateinfos update --version 6.0.0
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-templateinfos-update"></a>
 
 | Name      | Description                                            |
 | --------- | ------------------------------------------------------ |
 | --versopm | The verion of omnia cli template to update information |
 
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-templateinfos-update"></a>
 
 No optional parameters
 
@@ -1045,19 +1058,19 @@ No optional parameters
 
 Remove template information
 
-##### Example
+##### Example<a id="example-dev-templateinfos-remove"></a>
 
 ```
 omnia dev templateinfos remove --id eecc5c09-9e15-4907-80c8-67a198387b7b
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-dev-templateinfos-remove"></a>
 
 | Name | Description                           |
 | ---- | ------------------------------------- |
 | --id | The id of template information remove |
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-dev-templateinfos-remove"></a>
 
 No optional parameters
 
@@ -1068,17 +1081,17 @@ No optional parameters
 ## omnia login
 Logs you in to the Omnia Cloud using azure ad credentials
 
-##### Example
+##### Example<a id="example-login"></a>
 ```
 omnia login
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-login"></a>
 
 No required parameters
     
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-login"></a>
 
 No optional parameters
 
@@ -1087,18 +1100,18 @@ No optional parameters
 ## omnia logout
 Logs you out of the Omnia Cloud
 
-##### Example
+##### Example<a id="example-logout"></a>
 
 ```
 omnia logout
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-logout"></a>
 
 No required parameters
     
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-logout"></a>
 
 No optional parameters
 
@@ -1110,12 +1123,12 @@ No optional parameters
 
 Registers a new tenant in Omnia Cloud
 
-##### Example
+##### Example<a id="example-tenants-new"></a>
 ```
 omnia tenants new --intent dev --name "My Customer" --omnia-dns-suffix "mycustomer" --sp-dns-suffix "mycustomer" --azure-ad-id "8c6e9ace-69e9-4272-8225-714d57a3cceb" --region "westeurope" --depgroupid "e871fe5f-3200-4417-8baa-0305fb74fbbf" --clusterid "f1ae97cc-2bc3-49b1-adff-33f9b7b5beae" --maincontacts "admin@hotmail.com" --securitycontacts "user@hotmail.com,admin@hotmail.com"
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-tenants-new"></a>
 
 | Name               | Description                                                                                                                                                   |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1129,7 +1142,7 @@ omnia tenants new --intent dev --name "My Customer" --omnia-dns-suffix "mycustom
 | --maincontacts     | The tenant's main contacts (email) information. It's required unless --skip-tenant-contact is provided.                                                       |
 | --securitycontacts | The tenant's security contacts (email) information. It's required unless --skip-tenant-contact is provided.                                                   | 
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-tenants-new"></a>
 
 | Name                  | Description                                                                                                 |
 | --------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -1143,7 +1156,7 @@ omnia tenants new --intent dev --name "My Customer" --omnia-dns-suffix "mycustom
 
 List all the existing tenants or detailed information about a tenant if id is provided
 
-##### Example
+##### Example<a id="example-tenants-list"></a>
 ```
 omnia tenants list
 
@@ -1157,11 +1170,11 @@ omnia tenants list --filter contactname -wide
 
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-tenants-list"></a>
 
 No required parameters  
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-tenants-list"></a>
 
 | Name                          | Description                             |
 | ----------------------------- | --------------------------------------- |
@@ -1178,16 +1191,16 @@ No required parameters
 
 Redirects users accessing the tenant to a "Omnia is down" page. For debugging purposes the tenant can be accessed by adding ?redirect=true or ?debug=true as a querystring parameter in the url
 
-##### Example
+##### Example<a id="example-tenants-update-enablerror"></a>
 ```
 omnia tenants update enableerror {tenantid}
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-tenants-update-enablerror"></a>
 
 No required parameters  
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-tenants-update-enablerror"></a>
 
 No optional parameters
 
@@ -1197,16 +1210,16 @@ No optional parameters
 
 Stops the redirect applied by the omnia tenants update enableerror cmd
 
-##### Example
+##### Example<a id="example-tenants-update-disableerror"></a>
 ```
 omnia tenants update disableerror {tenantid}
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-tenants-update-disableerror"></a>
 
 No required parameters  
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-tenants-update-disableerror"></a>
 
 No optional parameters
 
@@ -1216,18 +1229,18 @@ No optional parameters
 
 Enables to upload a custom error page for the error redirect page
 
-##### Example
+##### Example<a id="example-tenants-update-customerrorpage"></a>
 ```
 omnia tenants update customerrorpage {tenantid} --path c:\html\customerror.html
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-tenants-update-customerrorpage"></a>
 
 | Name   | Description                              |
 | ------ | ---------------------------------------- |
 | --path | The path to the html page to be uploaded |
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-tenants-update-customerrorpage"></a>
 
 No optional parameters
 
@@ -1237,13 +1250,13 @@ No optional parameters
 
 Enables mobile login using kaizala connector
 
-##### Example
+##### Example<a id="example-tenants-update-kaizala"></a>
 ```
 omnia tenants update kaizala {tenantid} --connectorid {connectorid} --connectorsecret {connectorsecret} 
 --groupname {groupname} --connectortoken {connectortoken}
 ```
 
-##### Required Parameters
+##### Required Parameters<a id="required-parameters-tenants-update-kaizala"></a>
 
 | Name              | Description                                        |
 | ----------------- | -------------------------------------------------- |
@@ -1252,7 +1265,7 @@ omnia tenants update kaizala {tenantid} --connectorid {connectorid} --connectors
 | --groupname       | The Kaizala group name where the allowed users are |
 | --connectortoken  | The connector token from Kaizala                   |
 
-##### Optional Parameters
+##### Optional Parameters<a id="optional-parameters-tenants-update-kaizala"></a>
 
 No optional parameters
 
@@ -1437,6 +1450,10 @@ omnia tenants update whitelistip {tenantid} --value ""
 ```
 
 ##### Required Parameters<a id="required-parameters-update-whitelistip"></a>
+  - [omnia tenants update autosuspendsettings](#omnia-tenants-update-autosuspendsettings)
+        - [Example](#example-update-autosuspendsettings)
+        - [Required Parameters](#required-parameters-update-autosuspendsettings)
+        - [Optional Parameters](#optional-parameters-update-autosuspendsettings)
 
 | Name     | Description                                            |
 | -------- | ------------------------------------------------------ |
@@ -1445,6 +1462,31 @@ omnia tenants update whitelistip {tenantid} --value ""
 
 
 ---
+
+## omnia tenants update autosuspendsettings
+
+Update auto-suspend settings for a tenant. This controls whether the tenant should be automatically suspended after a period of inactivity.
+
+##### Example<a id="example-update-autosuspendsettings"></a>
+```
+omnia tenants update autosuspendsettings {tenantid} --enabled true --inactivedays 14
+```
+
+##### Required Parameters<a id="required-parameters-update-autosuspendsettings"></a>
+
+| Name        | Description                                            |
+| ----------- | ------------------------------------------------------ |
+| --tenantid  | The id of the tenant to update auto-suspend settings   |
+| --enabled   | Enable or disable auto-suspend (true/false)            |
+
+##### Optional Parameters<a id="optional-parameters-update-autosuspendsettings"></a>
+
+| Name           | Description                                                      |
+| -------------- | ---------------------------------------------------------------- |
+| --inactivedays | Number of inactive days before auto-suspend triggers (default: 14)|
+
+---
+
 
 ## omnia tenants diagnostic add
 
@@ -3848,6 +3890,57 @@ omnia feedtenants delete {id} --code {yy-dd-MM-m}
 | --code  | The code needs to be entered (format: yy-dd-MM-m).       |
 
 ---
+
+# Global Settings Commands <a id="global-settings-commands"></a>
+
+With global settings commands, it's possible to manage cloud-wide configuration settings. These settings apply across all tenants and control various system behaviors.
+
+## omnia globalsettings list <a id="omnia-globalsettings-list"></a>
+
+List all global settings or get details of a specific setting.
+
+##### Example<a id="example-globalsettings-list"></a>
+```
+omnia globalsettings list
+
+omnia globalsettings list --name {settingName}
+```
+
+##### Required Parameters<a id="required-parameters-globalsettings-list"></a>
+
+No required parameters
+
+##### Optional Parameters<a id="optional-parameters-globalsettings-list"></a>
+
+| Name          | Description                                   |
+| ------------- | --------------------------------------------- |
+| --name        | The name of the specific setting to retrieve. |
+| --output json | Return data as json                           |
+
+---
+
+## omnia globalsettings update <a id="omnia-globalsettings-update"></a>
+
+Update a global setting value.
+
+##### Example<a id="example-globalsettings-update"></a>
+```
+omnia globalsettings update --name {settingName} --value {settingValue}
+```
+
+##### Required Parameters<a id="required-parameters-globalsettings-update"></a>
+
+| Name    | Description                         |
+| ------- | ----------------------------------- |
+| --name  | The name of the setting to update.  |
+| --value | The new value for the setting.      |
+
+##### Optional Parameters<a id="optional-parameters-globalsettings-update"></a>
+
+No optional parameters
+
+---
+
 
 # Regular Mode Deployment for version 6 to 7 <a id="regular-mode-deployment"></a>
 
