@@ -3791,11 +3791,12 @@ omnia feedtenants update --name {Name} --tenantid {TenantId} --extensionurl {Ext
 
 ##### Optional Parameters<a id="optional-parameters-feedtenants-update"></a>
 
-| Name                 | Description                                                                   |
-| -------------------- | ----------------------------------------------------------------------------- |
-| --resourceproviderid | The resource provider id associated with the feed tenant.                     |
-| --domains            | A comma-separated list of domains associated with the feed tenant.            |
-| --useactivityhub     | Optional boolean flag to use Activity Hub. Default value is false.            |
+| Name                   | Description                                                                                          |
+| ---------------------- | ---------------------------------------------------------------------------------------------------- |
+| --resourceproviderid   | The NotificationHub resource provider Id (GUID). When supplied, `--resourceprovidername` is ignored. |
+| --resourceprovidername | The NotificationHub resource provider name. Ignored when `--resourceproviderid` is supplied.         |
+| --domains              | A comma-separated list of domains associated with the feed tenant.                                   |
+| --useactivityhub       | Optional boolean flag to use Activity Hub. Default value is false.                                   |
 
 ---
 
