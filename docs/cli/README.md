@@ -1282,18 +1282,26 @@ No optional parameters
 
 ## omnia tenants update depsecurity
 
-Updates level of Deployment Security. A high level of Deployment Security will not allow you to deploy extensions without --code parameter.
+Updates the level of Deployment Security of a tenant.
+
+- **Default (0):** deploys need no code.
+- **High (1):** every deploy needs the `--code` parameter.
+- **Flexible (2):** hotfixes (same major, minor and prerelease label, higher version) and a reinstall of the running version need no code. Any other change, such as a minor or major upgrade, needs the `--code` parameter. A deployment group rollout skips those changes for a Flexible tenant, prints a warning and continues with the rest of the group.
 
 ##### Example<a id="example-update-depsecurity"></a>
 ```
 omnia tenants update depsecurity {tenantid} --level {level}
+
+Sets a tenant to Flexible, by name or by number
+omnia tenants update depsecurity {tenantid} --level Flexible
+omnia tenants update depsecurity {tenantid} --level 2
 ```
 
 ##### Required Parameters<a id="required-parameters-update-depsecurity"></a>
 
-| Name    | Description                                                |
-| ------- | ---------------------------------------------------------- |
-| --level | The new level of Deployment Security (0: Default; 1: High) |
+| Name    | Description                                                                                |
+| ------- | ------------------------------------------------------------------------------------------ |
+| --level | The new level of Deployment Security, by name or number (0: Default; 1: High; 2: Flexible) |
 
 
 ##### Optional Parameters<a id="optional-parameters-update-depsecurity"></a>
