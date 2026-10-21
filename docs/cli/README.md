@@ -2055,7 +2055,7 @@ omnia extensions deploy aa000000-0000-aaaa-0000-0000000000aa:6.0.* --tenantid {t
 Deploys latest minor and patch version of Omnia for the major 6 release
 omnia extensions deploy aa000000-0000-aaaa-0000-0000000000aa:6.* --tenantid {tenantId}
 
-Deploys specific version of Omnia version 6.0.0 to the tenant that has a high-level of Deployment Security
+Deploys specific version of Omnia version 6.0.0 to a tenant that has High Deployment Security, or that has Flexible Deployment Security when 6.0.0 is not a hotfix of the running version
 omnia extensions deploy aa000000-0000-aaaa-0000-0000000000aa:6.0.0 --tenantid {tenantId} --code {yy-dd-MM-m}
 
 ```
@@ -2081,7 +2081,7 @@ omnia extensions deploy aa000000-0000-aaaa-0000-0000000000aa:6.0.0 --tenantid {t
 | -r --restart            | Auto restart the tenant after deploying                                                                                  |
 | --scalelevel            | Auto scale up the database for running prerun/postrun. Options: ("small", "medium", "large")                             |
 | --increasesqlbyid       | Specify the SQL resource Unique Id that needs to scale up if the extension has many SQL resources                        |
-| --code                  | The code needs to be entered when deploy to a high-level Deployment Security tenant (format: yy-dd-MM-m)                 |
+| --code                  | The code needs to be entered when deploying to a High Deployment Security tenant, or a non-hotfix version (such as a minor or major upgrade) to a Flexible tenant with --tenantid (format: yy-dd-MM-m) |
 | --ignore-status-check   | Ignore the status check of the tenant before deploying. If not set, when deploying Rejected version, it will throw error |
 
 ---
