@@ -94,6 +94,11 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
         - [Example](#example-13)
         - [Required Parameters](#required-parameters-19)
         - [Optional Parameters](#optional-parameters-19)
+- [Progress Commands](#progress-commands)
+  - [omnia resume](#omnia-resume)
+        - [Example](#example-resume)
+        - [Required Parameters](#required-parameters-resume)
+        - [Optional Parameters](#optional-parameters-resume)
 - [Tenant Commands](#tenant-commands)
   - [omnia tenants new](#omnia-tenants-new)
         - [Example](#example-14)
@@ -220,6 +225,14 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
         - [Example](#example-tenants-permissions-list)
         - [Required Parameters](#required-parameters-tenants-permissions-list)
         - [Optional Parameters](#optional-parameters-tenants-permissions-list)
+  - [omnia tenants publisher status](#omnia-tenants-publisher-status)
+        - [Example](#example-tenants-publisher-status)
+        - [Required Parameters](#required-parameters-tenants-publisher-status)
+        - [Optional Parameters](#optional-parameters-tenants-publisher-status)
+  - [omnia tenants publisher logo](#omnia-tenants-publisher-logo)
+        - [Example](#example-tenants-publisher-logo)
+        - [Required Parameters](#required-parameters-tenants-publisher-logo)
+        - [Optional Parameters](#optional-parameters-tenants-publisher-logo)
 - [Tenant Resources Commands](#tenant-resources-commands)
   - [omnia tenants resources sqlupdate](#omnia-tenants-resources-sqlupdate)
         - [Example](#example-tenants-resources-sqlupdate)
@@ -1104,6 +1117,39 @@ No optional parameters
 
 ---
 
+# Progress Commands
+
+## omnia resume
+
+Monitors an orchestration progress until it ends, or shows its history when it already ended. When the progress is the tenant provisioning of [omnia tenants new](#omnia-tenants-new) or the DNS suffix change of [omnia tenants update dns](#omnia-tenants-update-dns), it ended, and Omnia Cloud still holds the admin consent link of the tenant app, the command then runs the [publisher verification](#publisher-verification) of that app. A failed progress still ends with an error after the verification.
+
+With `--tenant <tenant id>` the command continues the publisher verification of that tenant's app directly. This is the way to continue a failed or stopped verification: it works at any time, while progress records expire after 30 days. Every failed or stopped verification, `omnia tenants list {tenantid}` and `omnia tenants publisher status` name it: `Continue with: omnia resume --tenant <tenant id>`. When the link is not held, it prints that there is nothing to continue.
+
+##### Example<a id="example-resume"></a>
+```
+omnia resume {progressid}
+omnia resume --tenant {tenantid}
+omnia resume --tenant {tenantid} --upn admin@contoso.com
+```
+
+##### Parameters<a id="required-parameters-resume"></a>
+
+Exactly one of:
+
+| Name                | Description                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------- |
+| {progressid}        | The id of the progress, passed as the first argument.                               |
+| --tenant {tenantid} | Continue the publisher verification of the app of this tenant (the Omnia tenant id). |
+
+##### Optional Parameters<a id="optional-parameters-resume"></a>
+
+| Name         | Description                                                                     |
+| ------------ | ------------------------------------------------------------------------------- |
+| -o, --offset | The number of messages to skip (with a progress id).                            |
+| --upn        | The account to sign in to Microsoft Graph with for the publisher verification.  |
+
+---
+
 # Tenant Commands
 
 ## omnia tenants new
@@ -1136,6 +1182,22 @@ omnia tenants new --intent dev --name "My Customer" --omnia-dns-suffix "mycustom
 | --clusterid           | The Cluster Id where the tenant will belong to. Otherwise, the cluster is selected by the system.           |
 | --singledomain        | Enable single-domain mode for the new tenant (true/false). Defaults to true.                                |
 | --skip-tenant-contact | Allow to skip tenant contacts information.                                                                  |
+| --upn                 | The account to sign in to Microsoft Graph with for the publisher verification. Without it, the browser shows the account picker. |
+
+#### Publisher verification <a id="publisher-verification"></a>
+
+When publisher verification is enabled on the current cloud, Omnia Cloud holds the admin consent link of the new tenant app (`omnia@<tenant>`) until its publisher is verified. After the tenant is created, the command verifies the publisher without asking for confirmation: the app gets the publisher domain and the Partner ID that are configured for the cloud, so the admin consent screen shows a verified publisher. [omnia tenants update dns](#omnia-tenants-update-dns), which creates a new app, does the same. The verification:
+
+1. Reads the app from Microsoft Graph. If the publisher domain and the verified publisher already match, it only records the status in Omnia Cloud.
+2. If the publisher domain is not set yet, it asks Omnia Cloud to publish the domain association file for this app. It then opens the portal link (Branding & properties) in the browser, prints it with the time until which the file stays public (about 10 minutes), and checks Microsoft Graph every 5 seconds. Set and verify the publisher domain in the portal; the command continues by itself as soon as Graph shows the domain. When the public window passes first, the command publishes the file again, at most twice. Press `p` to publish the file again yourself, or `q` to stop.
+3. Calls `setVerifiedPublisher` with the Partner ID, reads the app back and records the status in Omnia Cloud. It only reports success when both values match. When Microsoft refuses the call after its risk check ("A verified publisher cannot be added to this application"), the command calls it again up to 5 times, 3 minutes apart; while Graph still compares the old publisher domain right after the portal step, it calls again up to 5 times, 10 seconds apart.
+
+If the verification stops or fails, the tenant stays created and its consent link stays held. The command prints the reason and `Continue with: omnia resume --tenant <tenant id>`; [omnia resume](#omnia-resume) runs the verification again, at any time. When the input is redirected (a script), the command does not run the verification and prints the same warning.
+
+- The verification needs a Microsoft Graph token with multi-factor authentication. It first reuses the Omnia CLI sign-in silently (same account; with `--upn`, only when `--upn` names that account). If that is not possible, or the token has no multi-factor authentication, it signs in to Microsoft Graph in the browser (`--upn` picks the account; otherwise the browser shows the account picker); that browser sign-in is not saved and does not change the Omnia Cloud sign-in. The account needs Application Administrator or Cloud Application Administrator in the directory that holds the tenant apps, and Partner Admin or Account Admin on the Partner Center account of the Partner ID.
+- Only one app can be prepared at a time, because the association file holds a single app. A second prepare fails until the first one completes or its reservation expires. A run that stops after publishing the file (an error, or `q`) releases the reservation right away.
+- `omnia tenants list {tenantid}` says the consent link is held instead of printing it, and `omnia extensions deploy` says that admin consent for new permissions is held. Verifying the publisher releases the link. Apps created before publisher verification was enabled keep their link.
+- Run it on your own machine: it needs a browser and interactive input.
 
 ---
 
@@ -1276,7 +1338,11 @@ omnia tenants update dns {tenantid} --omnia-dns-suffix {omnia-dns-suffix}
 
 ##### Optional Parameters<a id="optional-parameters-update-dns"></a>
 
-No optional parameters
+| Name  | Description                                                                     |
+| ----- | ------------------------------------------------------------------------------- |
+| --upn | The account to sign in to Microsoft Graph with for the publisher verification.  |
+
+The command creates a new app registration for the tenant and resets its publisher verification status. When publisher verification is enabled on the current cloud, the command runs the [publisher verification](#publisher-verification) of the new app after the DNS change finished; `omnia resume --tenant <tenant id>` continues it.
 
 ---
 
@@ -1899,6 +1965,61 @@ omnia tenants permissions list {tenantid} -r TenantAdmin
 No Optional parameters
 
 ---
+
+## omnia tenants publisher status <a id="omnia-tenants-publisher-status"></a>
+
+Shows the publisher verification status that Omnia Cloud stored for a tenant app registration, or for every tenant app of the current cloud with `-a`. With `--live`, it also reads the publisher domain and the verified publisher from Microsoft Graph (separate Graph sign-in, see [publisher verification](#publisher-verification)). When Omnia Cloud holds the admin consent link of an app until its publisher is verified, it prints a warning with the command that continues the verification and releases the link: `omnia resume --tenant <tenant id>`.
+
+##### Example<a id="example-tenants-publisher-status"></a>
+```
+omnia tenants publisher status {tenantid}
+omnia tenants publisher status {tenantid} --live
+omnia tenants publisher status -a
+omnia tenants publisher status -a --live -o json
+```
+
+##### Required Parameters<a id="required-parameters-tenants-publisher-status"></a>
+
+| Name       | Description                                                                |
+| ---------- | -------------------------------------------------------------------------- |
+| {tenantid} | The id of the tenant, passed as the first argument. Not needed with `-a`.   |
+
+##### Optional Parameters<a id="optional-parameters-tenants-publisher-status"></a>
+
+| Name         | Description                                                                       |
+| ------------ | --------------------------------------------------------------------------------- |
+| -a, --all    | Show every tenant app registration of the current cloud.                          |
+| --live       | Also read the publisher domain and the verified publisher from Microsoft Graph.   |
+| --upn        | The account to sign in to Microsoft Graph with when `--live` is used.             |
+| -o, --output | The output format: `Grid` (default) or `Json`.                                    |
+
+---
+
+## omnia tenants publisher logo <a id="omnia-tenants-publisher-logo"></a>
+
+Sets the Omnia logo on an existing tenant app registration, or on every tenant app of the current cloud with `-a` (one tenant after the other). New apps get the logo when they are created. The app logo must be enabled on the current cloud and the logo file must be part of the running Omnia Cloud release; otherwise the command stops at the first tenant and prints the error.
+
+##### Example<a id="example-tenants-publisher-logo"></a>
+```
+omnia tenants publisher logo {tenantid} --code {code}
+omnia tenants publisher logo -a --code {code}
+```
+
+##### Required Parameters<a id="required-parameters-tenants-publisher-logo"></a>
+
+| Name       | Description                                                                |
+| ---------- | -------------------------------------------------------------------------- |
+| {tenantid} | The id of the tenant, passed as the first argument. Not needed with `-a`.   |
+| --code     | The code needs to be entered (format: yy-dd-MM-m of the current time).      |
+
+##### Optional Parameters<a id="optional-parameters-tenants-publisher-logo"></a>
+
+| Name      | Description                                                            |
+| --------- | ---------------------------------------------------------------------- |
+| -a, --all | Set the logo on every tenant app registration of the current cloud.    |
+
+---
+
 
 # Extension Commands
 
