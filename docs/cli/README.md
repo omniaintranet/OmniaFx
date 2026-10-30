@@ -393,6 +393,22 @@ Omnia Cli is a dotnet tool that manages everything from Development to Productio
   - [omnia domain dnspreview](#omnia-domain-dnspreview)
         - [Example](#example-domain-dnspreview)
         - [Required Parameters](#required-parameters-domain-dnspreview)
+  - [omnia domain add](#omnia-domain-add)
+        - [Example](#example-domain-add)
+        - [Required Parameters](#required-parameters-domain-add)
+        - [Optional Parameters](#optional-parameters-domain-add)
+  - [omnia domain status](#omnia-domain-status)
+        - [Example](#example-domain-status)
+        - [Required Parameters](#required-parameters-domain-status)
+  - [omnia domain verify](#omnia-domain-verify)
+        - [Example](#example-domain-verify)
+        - [Required Parameters](#required-parameters-domain-verify)
+  - [omnia domain renew](#omnia-domain-renew)
+        - [Example](#example-domain-renew)
+        - [Required Parameters](#required-parameters-domain-renew)
+  - [omnia domain remove](#omnia-domain-remove)
+        - [Example](#example-domain-remove)
+        - [Required Parameters](#required-parameters-domain-remove)
   - [omnia certs delete](#omnia-certs-delete)
         - [Example](#example-certs-delete)
         - [Required Parameters](#required-parameters-certs-delete)
@@ -3018,6 +3034,134 @@ omnia domain dnspreview -d intranet.contoso.com -t {tenantid}
 | -d   | --domain                 | The custom domain, like intranet.contoso.com                 |
 | -t   | --tenantid               | The id (Guid) of the tenant you're generating the values for |
 | -psn | --prettify-service-names | Prettify the service name                                    |
+
+---
+
+## omnia domain add
+
+Add a custom domain with an **automatic certificate**. Omnia verifies the DNS records, issues the certificate (ACME, HTTP-01) and renews it without any file upload. The command prints the DNS records to send to the customer. Use [omnia domain update](#omnia-domain-update) instead for an uploaded certificate (root domains, wildcards, or when a specific certificate is required).
+
+If the tenant already has a custom domain, the existing one keeps serving until the new one is verified and active. If the same domain currently uses an uploaded certificate, that certificate keeps serving until the managed one is deployed and confirmed.
+
+Only subdomains are supported (no root domains such as contoso.com) and no wildcards. The customer must keep the CNAME records, the TXT record and any CAA records in place, and must not put a proxy or WAF in front that blocks `/.well-known/acme-challenge/`.
+
+##### Example<a id="example-domain-add"></a>
+
+```
+omnia domain add --name intranet.contoso.com --tenantid {tenantid}
+```
+
+##### Required Parameters<a id="required-parameters-domain-add"></a>
+
+| Name           | Description                                         |
+| -------------- | --------------------------------------------------- |
+| -n, --name     | The custom domain, like intranet.contoso.com        |
+| -t, --tenantid | The id (Guid) of the tenant                         |
+
+##### Optional Parameters<a id="optional-parameters-domain-add"></a>
+
+| Name                   | Description                                                                 |
+| ---------------------- | --------------------------------------------------------------------------- |
+| -m, --managedcert      | Use an automatic certificate. This is already the default for this command. |
+| -r, --redirectenabled  | Whether Omnia's default domain always redirects to the custom domain or not |
+
+The DNS records printed are:
+
+| Type | Name                                              | Purpose                                                       |
+| ---- | ------------------------------------------------- | ------------------------------------------------------------- |
+| CNAME | The domain, and one `<serviceid>-<domain>` per web service | Points the hostnames at the tenant                    |
+| TXT  | `_omnia-verify.<domain>` = `omnia-verify=<tenant>.<token>` | Proves ownership and binds the domain to the tenant   |
+| CAA  | Only if the domain already has CAA records        | Must allow the certificate authority (and the fallback CA)    |
+
+Status moves through **Waiting for DNS, Verified, Issuing certificate, Deploying, Active**.
+
+---
+
+## omnia domain status
+
+Show the state of a custom domain with an automatic certificate: status, whether ownership is verified, CA, certificate expiry, next renewal or attempt, failed attempts and the last error, plus the state of every hostname.
+
+##### Example<a id="example-domain-status"></a>
+
+```
+omnia domain status --name intranet.contoso.com --tenantid {tenantid}
+```
+
+##### Required Parameters<a id="required-parameters-domain-status"></a>
+
+| Name           | Description                                  |
+| -------------- | -------------------------------------------- |
+| -n, --name     | The custom domain, like intranet.contoso.com |
+| -t, --tenantid | The id (Guid) of the tenant                  |
+
+Common errors in the last error column:
+
+| Error                                    | Likely cause                                 | Action                                                          |
+| ---------------------------------------- | -------------------------------------------- | --------------------------------------------------------------- |
+| Ownership not verified                   | The TXT record is missing or wrong           | Send the customer the TXT value again                           |
+| CNAME mismatch on a `<serviceid>-...` host | The host isn't added or points elsewhere   | The certificate is issued without that hostname until fixed     |
+| CAA forbids issuance                     | The customer's CAA doesn't allow our CA      | The customer adds a CAA record for the CA                       |
+| The CA couldn't validate the domain      | A proxy or WAF blocks the challenge path     | Bypass `/.well-known/acme-challenge/`, or keep an uploaded certificate |
+| The CA is unavailable or rate limiting   | CA side                                      | Retried automatically, no action needed                         |
+| Served certificate mismatch              | The secret wasn't applied on a cluster       | Run `omnia domain verify`, the stored certificate is redeployed without reissuing |
+
+---
+
+## omnia domain verify
+
+Check the DNS records now, instead of waiting for the next automatic check (every 15 minutes while waiting for DNS).
+
+##### Example<a id="example-domain-verify"></a>
+
+```
+omnia domain verify --name intranet.contoso.com --tenantid {tenantid}
+```
+
+##### Required Parameters<a id="required-parameters-domain-verify"></a>
+
+| Name           | Description                                  |
+| -------------- | -------------------------------------------- |
+| -n, --name     | The custom domain, like intranet.contoso.com |
+| -t, --tenantid | The id (Guid) of the tenant                  |
+
+---
+
+## omnia domain renew
+
+Force a new certificate for a custom domain with an automatic certificate. The current certificate keeps serving until the new one is deployed and confirmed. Renewal normally happens automatically when a third of the certificate's lifetime is left.
+
+##### Example<a id="example-domain-renew"></a>
+
+```
+omnia domain renew --name intranet.contoso.com --tenantid {tenantid}
+```
+
+##### Required Parameters<a id="required-parameters-domain-renew"></a>
+
+| Name           | Description                                  |
+| -------------- | -------------------------------------------- |
+| -n, --name     | The custom domain, like intranet.contoso.com |
+| -t, --tenantid | The id (Guid) of the tenant                  |
+
+---
+
+## omnia domain remove
+
+Remove a custom domain with an automatic certificate. Renewal stops and queued work for the domain is cancelled. If the domain is the tenant's active custom domain, it is removed from the tenant as well. [omnia domain delete](#omnia-domain-delete) also stops managed renewal when it removes the active domain.
+
+##### Example<a id="example-domain-remove"></a>
+
+```
+omnia domain remove --name intranet.contoso.com --tenantid {tenantid} --code 22-05-10-44
+```
+
+##### Required Parameters<a id="required-parameters-domain-remove"></a>
+
+| Name           | Description                                  |
+| -------------- | -------------------------------------------- |
+| -n, --name     | The custom domain, like intranet.contoso.com |
+| -t, --tenantid | The id (Guid) of the tenant                  |
+| --code         | You know.                                    |
 
 ---
 
