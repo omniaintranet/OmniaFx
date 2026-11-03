@@ -1368,7 +1368,7 @@ Updates the level of Deployment Security of a tenant.
 
 - **Default (0):** deploys need no code.
 - **High (1):** every deploy needs the `--code` parameter.
-- **Flexible (2):** hotfixes (same major, minor and prerelease label, higher version) and a reinstall of the running version need no code. Any other change, such as a minor or major upgrade, needs the `--code` parameter. A deployment group rollout skips those changes for a Flexible tenant, prints a warning and continues with the rest of the group.
+- **Flexible (2):** hotfixes (same major and minor, higher version, whatever the prerelease label) and a reinstall of the running version need no code. Any other change, such as a minor or major upgrade, needs the `--code` parameter. A deployment group rollout skips those changes for a Flexible tenant, prints a warning and continues with the rest of the group.
 
 ##### Example<a id="example-update-depsecurity"></a>
 ```
